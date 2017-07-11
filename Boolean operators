@@ -11,8 +11,14 @@ False = 0
  <= L or equal
  >= G or equal
  
- 
- 
+ # to combine can use 
+ & is and 
+ | is or
+
+# expressions must both be in parentheses
+vector = numpy.array([5, 10, 15, 20])
+ten_and_5 = (vector == 10) & (vector == 5) # means and, thus both values must be true
+ten_or_5(vector == 10) | (vector == 5)
  
  
 # Example:  using the == to to select elements in an array. 
