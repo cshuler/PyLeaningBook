@@ -1,0 +1,8 @@
+# for loops
+
+#syntax
+for <i> in <object>:
+    <some function>
+#performs function on each i, 
+- in a list the i represents each item. 
+- 
