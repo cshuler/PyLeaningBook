@@ -1,0 +1,20 @@
+Note: words used to mean objects and not commands
+- object = any object
+- list = a list object
+- string = string object
+- x, y, z  = variables 
+
+
+
+print( object ) # display stuff
+
+list.append( next item in list )   # add items to a list
+
+len( object )   # size of object 
+
+x = open( sometextfile.txt, "r" )  # opens a file 
+y = x.read()                       # reads file into a text string 
+
+x = string.split( "delimiter" )   # delimiter can be "," or "\n" or whatever
+
+int(x) # turns x into an integer type object
