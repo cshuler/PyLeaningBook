@@ -1,0 +1,50 @@
+basic operators
+
+True = 1
+False = 0 
+# must be capitolized
+
+ x == y means if x = y then = True 
+ x != y means x does not = y  = true
+ > greater
+ < less
+ <= L or equal
+ >= G or equal
+ 
+ 
+ 
+ 
+ 
+# Example:  using the == to to select elements in an array. 
+# This code takes the vector and makes an array of true and false values based on if each element if equal to 10 or not. 
+
+vector = numpy.array([5, 10, 15, 20, 10])
+equal_to_ten = (vector == 10)  # this variable is actuall an array of T and F, [False True False False]
+
+selected = vector[equal_to_ten] # this only takes the values that are equal to 10, and puts them in their own vector
+
+matrix = numpy.array([
+                [5, 10, 15], 
+                [20, 25, 30],
+                [35, 40, 45]
+             ])
+a = (matrix == 20) # make a boolean array of T and F
+print(a)
+
+# call up the matrix and out of all the rows, a will be equal to the 
+b = (matrix[1,1] == 25) # the [] on matrix specifies which rows and columns to compare
+print(b)
+
+b = (matrix[:,1] == 25) # all rows and column 1
+print(b)
+
+c = matrix[b,:]
+print(c)
+
+#print(matrix[a, :])
+
+country_is_algeria = world_alcohol[:,2] == "Algeria" #= make a true value for any rows that have algeria in the 2nd column
+country_algeria = world_alcohol[country_is_algeria,0:] # any of the rows that the value for country_is_algeria is true will be added to country_algeria list
+print(country_algeria)
+
+ 
