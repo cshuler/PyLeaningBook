@@ -1,0 +1,18 @@
+#Counting the Items in a List
+
+count = 0
+for i in <anylist>:
+    count = count + 1
+#same as
+lengthofthelist = len( <anylist> )
+
+
+#create a list of specific items in a list
+
+weather_types = ["Rain", "Sunny", "Fog", "Fog-Rain", "Thunderstorm", "Type of Weather"]
+weather_type_found = []
+for i in  weather_types:
+   found = i in new_weather
+   weather_type_found.append(found)
+print(weather_type_found) 
+
