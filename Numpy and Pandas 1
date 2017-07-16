@@ -1,0 +1,92 @@
+#Creating arrays directly 
+
+import numpy as np
+
+#create vector array
+vector = np.array([10, 20, 30])
+
+#create matrix
+matrix = numpy.array([[5, 10, 15], [20, 25, 30], [35, 40, 45]])
+
+#pring out shape of the array
+vector.shape
+matrix.shape
+
+#read in datasets using the numpy.genfromtxt() function
+nfl = numpy.genfromtxt("data.csv", delimiter=",")
+
+#or in PANDAS
+#read in datasets using the pd.read_csv function
+all_ages = pd.read_csv("all-ages.csv")
+
+
+
+#data type in Numpy array
+
+Arrayname.dtype
+#float16, float32, or float64. The suffix 16, 32, or 64 indicates how many numbers after the decimal point the number can have.
+
+
+#generating an array of T or F values based on the values of an array
+vector = numpy.array([5, 10, 15, 20])
+vector == 10
+#Will yield   [False, True, False, False]
+
+
+
+# Snazzy, using the == to to select elements in an array. 
+# This code takes the vector and makes an array of true and false values based on if each element if equal to 10 or not. 
+vector = numpy.array([5, 10, 15, 20, 10])
+equal_to_ten = (vector == 10)  # this variable is actually an array of T and F, [False True False False]
+selected = vector[equal_to_ten] # this only takes the values that are equal to 10, and puts them in their own vector
+
+matrix = numpy.array([
+                [5, 10, 15], 
+                [20, 25, 30],
+                [35, 40, 45]
+             ])
+a = (matrix == 20) # make a boolean array of T and F
+print(a)
+
+# call up the matrix and out of all the rows, a will be equal to the 
+b = (matrix[1,1] == 25) # the [] on matrix specifies which rows and columns to compare
+print(b)
+
+b = (matrix[:,1] == 25) # all rows and column 1
+print(b)
+
+c = matrix[b,:]
+print(c)
+
+#print(matrix[a, :])
+
+country_is_algeria = world_alcohol[:,2] == "Algeria" #= make a true value for any rows that have algeria in the 2nd column
+country_algeria = world_alcohol[country_is_algeria,0:] # any of the rows that the value for country_is_algeria is true will be added to country_algeria list
+print(country_algeria)
+
+# can use & for and  and | for or to add multiple conditions, each thing (x == y) needs t be in parentheses 
+
+vector = numpy.array([5, 10, 15, 20])
+ta5 = (vector == 10) & (vector == 5) # means and, thus both values must be true
+print(ta5)
+
+vector = numpy.array([5, 10, 15, 20])
+to5 = (vector == 10) | (vector == 5) # the | is the OR operator
+print(to5)
+
+is_algeria_and_1986 = (world_alcohol[:,0] == "1986") & (world_alcohol[:,2] == "Algeria") 
+
+rows_with_algeria_and_1986 = world_alcohol[is_algeria_and_1986,:]
+print(rows_with_algeria_and_1986)
+
+
+# We can also use comparisons to replace values in an array, based on certain conditions. Here's an example of how we would do this for a vector:
+vector = numpy.array([5, 10, 15, 20])
+equal_to_ten_or_five = (vector == 10) | (vector == 5)
+vector[equal_to_ten_or_five] = 50
+
+
+# make a list of unique values in a dataframe
+<dataframe>['Column_label'].unique()
+
+
