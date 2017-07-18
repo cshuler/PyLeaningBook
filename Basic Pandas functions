@@ -1,0 +1,64 @@
+# make a list of unique values in a dataframe
+<dataframe>['Column_label'].unique()
+
+
+#show data type in Numpy array
+<Arrayname>.dtype
+
+#print out shape of the array
+vector.shape
+matrix.shape
+
+
+
+#read in datasets using the numpy.genfromtxt() function
+nfl = numpy.genfromtxt("data.csv", delimiter=",")
+
+#or in PANDAS
+#read in datasets using the pd.read_csv function
+all_ages = pd.read_csv("all-ages.csv")
+
+#Convert Series to a nested list
+<Series>.tolist()
+
+#Convert 2 lists to a series
+x = pandas.Series(data=<datalist>, index=<indexlist>)
+
+
+#sorting data
+sorted(<list>) 
+#returns ascending order of the list in alphabetical (strings) or numerical order. 
+#runn it on a series and apparently it will just give series values in order. 
+
+#run it on a dataframe and it returns a list of column headings in alphabetical order
+
+
+# to sort by columns on dataframe object in pandas use dataframe.sort()
+<dataframe>.sort(columns="whatever column you want to sort by")
+#other options are DataFrame.sort(columns=None, axis=0, ascending=True, inplace=False, kind='quicksort', na_position='last', **kwargs)
+
+#also can use 
+<dataframe>.sort_index()  # sorts by the index
+<dataframe>.sort_values("<stipulate column name>")  # sorts by the index
+# note that this perservs all order in each row!
+
+
+#combine two series into one dataframe
+<dataframe> = pd.concat([<series1>, <series2>], axis=1) #Axis = 1 means put them togehter as adjacient columns not a stacked row
+#also not sure how to preserve column index can rename them like this
+<dataframe>.columns = ['name1', 'name2']
+
+#Pull a series off of a dataframe to its own series (with same row index)
+<yournewseriesname> = pd.Series(<dataframe>["column_index_you_want"])
+
+
+
+
+
+
+
+
+
+
+
+
