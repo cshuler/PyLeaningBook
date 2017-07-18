@@ -18,3 +18,20 @@ y = x.read()                       # reads file into a text string
 x = string.split( "delimiter" )   # delimiter can be "," or "\n" or whatever
 
 int(x) # turns x into an integer type object
+
+#working with dictionaries
+# use {}
+
+Dictionary = {}
+Dictionary = { key1: value1, key2: value2, key3: value3}  # pairs separated by commas key-value pairs separated by :
+
+#Accessing items in dictionary
+Dictionary[key1] will print value 1
+#Can change items in dictionary 
+Dictionary[key1] = value8 
+
+
+#Create list of values 
+list(range(9))   # the range just makes an object that is (0:9) and the list makes it integer list
+#makes
+[0, 1, 2, 3, 4, 5, 6, 7, 8] 
