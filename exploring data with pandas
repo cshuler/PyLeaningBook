@@ -1,0 +1,87 @@
+#import data and explor comumn and row headders
+import pandas as pd
+data = pd.read_csv("thanksgiving.csv", encoding="Latin-1") 
+data.columns # show column names
+data.index   # show row index 
+data["Do you celebrate Thanksgiving?"].value_counts() 
+
+#filter out unwanted values
+datafilt = data["Do you celebrate Thanksgiving?"] == "Yes"
+data = data[datafilt]
+
+#look at stuff
+a = data[data["What is typically the main dish at your Thanksgiving dinner?"] == "Tofurkey" ] 
+a["Do you typically have gravy?"]
+
+#create booleans of where there are null values using .isnull()
+apple_isnull = data["Which type of pie is typically served at your Thanksgiving dinner? Please select all that apply. - Apple"].isnull()
+pumpkin_isnull  = data["Which type of pie is typically served at your Thanksgiving dinner? Please select all that apply. - Pumpkin"].isnull()
+pecan_isnull = data["Which type of pie is typically served at your Thanksgiving dinner? Please select all that apply. - Pecan"].isnull()
+
+# can combine values, is only true if all are true
+ate_pies = apple_isnull&pumpkin_isnull&pecan_isnull
+ate_pies.value_counts()
+
+
+
+#summing up parts of a datasets based on what you specify
+
+rows = (world_alcohol[:,0] == "1986") & (world_alcohol[:,2] == "Canada") # make a TF vector where T is only on rows with Canada and the year 1986
+canada_1986 = world_alcohol[rows, :] # make a sub-data set with just canada in 1986 
+C = canada_1986[:,4] == "" # find where there are blanks in the Column 5 data
+canada_1986[C, 4] = "0"   # mitigate
+canada_alcohol = canada_1986[:,4].astype(float) # change the column to float values, make a list of drins per type
+total_canadian_drinking = canada_alcohol.sum()  Sum that up
+print(total_canadian_drinking)
+print(canada_1986)
+
+
+#replacing all values that are equaal to certain values with a specified value
+vector = numpy.array([5, 10, 15, 20])
+equal_to_ten_or_five = (vector == 10) | (vector == 5)
+vector[equal_to_ten_or_five] = 50
+print(vector)
+
+# this replaces any values in that array with another value
+matrix = numpy.array([
+            [5, 10, 15], 
+            [20, 25, 30],
+            [35, 40, 45]
+         ])
+rep = (matrix[:,:] == 25) | (matrix[:,:] == 30)
+matrix[rep] = -999
+print(matrix)
+print(sc)
+
+
+
+# can also specify to replace things by row specificaly
+matrix = numpy.array([
+            [5, 10, 15], 
+            [20, 25, 30],
+            [35, 40, 45]
+         ])
+second_column_25 = matrix[:,1] == 25 # creates a vector of T and F in regards to the 2nd column of each row. not actually tied to the matrix but in the sme order. 
+matrix[second_column_25, :] = -9999   #Now can use that T F vector that is in the same order as the rows to do soething to that value, or others for that matter
+print(matrix)
+print(second_column_25)
+
+#replacing no data values here we replace blanks or "" with 0s
+
+is_value_empty = world_alcohol[:,4] == ""
+world_alcohol[is_value_empty, 4] = "0"
+
+
+#We can convert the data type of an array with the astype() method. Here's an example of how this works:
+vector = numpy.array(["1", "2", "3"])
+vector = vector.astype(float)
+#The code above will convert all of the values in vector to floats: [1.0, 2.0, 3.0].
+
+# more stylishly on real data
+alcohol_consumption = world_alcohol[:,4].astype(float)
+
+
+
+
+
+
