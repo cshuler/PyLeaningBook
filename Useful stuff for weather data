@@ -1,0 +1,14 @@
+
+# 1st steps, bringing in data then converting the date to a datetime
+data = pd.read_csv("data.csv")
+data["DATE"] = pd.to_datetime(unrate["DATE"])
+
+
+#print up statistics like mean std and max and min
+data["anycolumn"].describe()
+
+pandas.Series.dt
+<dateseries>.dt.hour # returns the hour value
+<dateseries>.dt.day # returns the day value
+<dateseries>.dt.second # returns the second value
+<dateseries>.dt.month # returns the month value   etc...
