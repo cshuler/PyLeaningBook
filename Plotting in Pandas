@@ -1,0 +1,41 @@
+
+import matplotlib.pyplot as plt
+
+
+# or: 
+insta#lling matplotlib using Anaconda: 
+conda install matplotlib
+
+#to select certain rows of certain coumns and plot them as a line plot
+plt.plot(data['column1'][:12], data['column2'][:12])
+
+# to rotate axes, ytics does the y
+plt.xticks(rotation=90)
+
+#Label axes and make title on top of plot
+plt.xlabel("anystring")
+plt.ylabel("anystring")
+plt.title("anystring")
+
+
+# making multiple subplots, 
+fig = plt.figure()    # generate a figure object named fig
+ax1 = fig.add_subplot(2,1,1)  # make the figure have multiple plots, 2 rows, 1 col, and plot # 1
+ax2 = fig.add_subplot(2,1,2) # 2nd plot row # 2 
+plt.show()
+
+#ADDING IN DATA and plotting it
+ax1.plot(unrate[:12]['DATE'], unrate[:12]['VALUE'])
+ax2.plot(unrate['DATE'][12:24], unrate['VALUE'][12:24])  # note the index order doesn't matter interesting....
+plt.show()
+
+# change dimensions of plot (in inches) float value
+fig = plt.figure(figsize=(numinches, numinches))
+
+
+
+
+
+
+
+
