@@ -1,0 +1,3 @@
+1. Make a list of all the files in each directory (by station)
+2. read each file into a pandas dataframe named whatever the file is named
+3. Compile all of those dataframes into a dictionary, keyed by the file name
