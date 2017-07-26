@@ -12,3 +12,21 @@ pandas.Series.dt
 <dateseries>.dt.day # returns the day value
 <dateseries>.dt.second # returns the second value
 <dateseries>.dt.month # returns the month value   etc...
+
+
+#reading in multiple data files into pandas dataframes
+#Trick 1
+# when you have multiple files in a folder directory <foldername>, and you have a list of the file names in <list>
+for i in <list>:
+    x = "<foldername>/{0}.format(i)
+    
+#the "<foldername>/{0}.format(i) will take the file in the list "<foldername>/{0}.format("file1.csv")
+#and turn it into a string that says "<foldername>/file1.csv"
+# the loop will then make x equal to the root of each file and directory which can then be stored in a dictionary like this: 
+
+datapile = {}  # is an empty dictionary where all of the pandas dataframes will be stored and referenced by the file name 
+for i in <list>:
+    x = "<foldername>/{0}.format(i)
+    key_name = f.replace(".csv", '')  # this makes the key name the name of the file minus the extension 
+    datapile[key_name] = d  # thus the key for each entry is key_name and the value is a dataframe of the data
+    
