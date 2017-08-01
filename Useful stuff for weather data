@@ -30,3 +30,15 @@ for i in <list>:
     key_name = f.replace(".csv", '')  # this makes the key name the name of the file minus the extension 
     datapile[key_name] = d  # thus the key for each entry is key_name and the value is a dataframe of the data
     
+    
+    
+#filtering a data frame to include only rows that meet a condition that you want
+<new_dataframe> = <dataframe>[<dataframe>[<column>] == "whatever condition you want"]
+  
+  
+#using pandas.DataFrame.merge()to join datasets
+# inner merge - only keeps rows that are in both datasets
+# outer merge - keeps rows from both data sets, NaN values fill all colimns from the set without the index. 
+# left merge - uses only rows from the leftmost dataset. Rows from the right not in the left are omitted
+# right merge - only the right
+
