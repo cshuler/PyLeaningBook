@@ -42,3 +42,6 @@ for i in <list>:
 # left merge - uses only rows from the leftmost dataset. Rows from the right not in the left are omitted
 # right merge - only the right
 
+#to apply
+<left_dataset>.merge(<right_dataset>, how="inner or outer or left...", on="the column heading to index the merge") 
+
