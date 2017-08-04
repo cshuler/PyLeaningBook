@@ -39,4 +39,36 @@ plt.plot(unrate[12:24]['MONTH'], unrate[12:24]['VALUE'], C = "b")
 
 
 
+#using plotting skills to plot up Kaitlin well data
+
+wells['well_data_101']['Samp_date'] = pd.to_datetime(wells['well_data_101']['Samp_date'], errors='coerce')
+fig = plt.figure(figsize=(18, 4)) # generate a figure object named fig
+
+discharge_plot = fig.add_subplot(1,4,1) # make the figure have multiple plots, 2 rows, 1 col, and plot # 1
+flow_plot = fig.add_subplot(1,4,2) # 2nd plot row # 2 
+meter_plot = fig.add_subplot(1,4,3) # 2nd plot row # 2 
+Cl_plot = fig.add_subplot(1,4,4) # 2nd plot row # 2 
+    
+discharge_plot.plot(wells['well_data_101']['Samp_date'], wells['well_data_101']['Discharge pressure [PSI]'])
+plt.setp(discharge_plot.xaxis.get_majorticklabels(), rotation=45)
+discharge_plot.set_ylabel('Discharge pressure [PSI]', fontsize = '12' )
+
+
+flow_plot.plot(wells['well_data_101']['Samp_date'], wells['well_data_101']['Flow [GPM]'])
+plt.setp(flow_plot.xaxis.get_majorticklabels(), rotation=45)
+flow_plot.set_ylabel('Flow [GPM]', fontsize = '12' )
+
+meter_plot.plot(wells['well_data_101']['Samp_date'], wells['well_data_101']['Meter reading '])
+plt.setp(meter_plot.xaxis.get_majorticklabels(), rotation=45)
+meter_plot.set_ylabel('Meter reading', fontsize = '12' )
+
+Cl_plot.plot(wells['well_data_101']['Samp_date'], wells['well_data_101']['Chloride [mg/L]'])
+plt.setp(Cl_plot.xaxis.get_majorticklabels(), rotation=45)
+Cl_plot.set_ylabel('Chloride [mg/L]', fontsize = '12' )
+
+fig.tight_layout()
+plt.show()
+    
+
+
 
