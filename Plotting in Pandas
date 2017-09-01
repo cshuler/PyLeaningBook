@@ -54,6 +54,9 @@ plt.setp(discharge_plot.xaxis.get_majorticklabels(), rotation=45)
 discharge_plot.set_ylabel('Discharge pressure [PSI]', fontsize = '12' )
 
 
+
+
+
 flow_plot.plot(wells['well_data_101']['Samp_date'], wells['well_data_101']['Flow [GPM]'])
 plt.setp(flow_plot.xaxis.get_majorticklabels(), rotation=45)
 flow_plot.set_ylabel('Flow [GPM]', fontsize = '12' )
@@ -69,6 +72,40 @@ Cl_plot.set_ylabel('Chloride [mg/L]', fontsize = '12' )
 fig.tight_layout()
 plt.show()
     
+
+# BAR PLOTS!
+import matplotlib.pyplot as plt
+from numpy import arange
+
+bar_heights = (a series or column of X number of values that is the ACTUAL DATA you want to plot.)
+bar_positions = arange(X as in X above)  # with no + value the bar starts at 0
+or
+bar_positions = arange(X as in X above) +.5  # to start the bar a little ways over
+
+
+fig, ax = plt.subplots()   # nice shortcut for making a figure object and an axes object at same time
+ax.bar(bar_positions,bar_heights,.5)    # actually plot the graph with the parameters specified, the last # is the width of the bar. 
+
+tick_positions = [8,9,10,11,12]  # the numerical list of which ticks get displayed
+ax.set_xticks(tick_positions)
+
+label_names = ['list of lablel names'..., 'Fandango_Ratingvalue', 'Fandango_Stars']
+ax.set_xticklabels(label_names,rotation=90)
+
+ax.set_xlabel('poo')
+ax.set_ylabel('pee')
+ax.set_title('title!')
+
+
+#SCATTER PLOTS!
+use Axes.scatter(). 
+The scatter() method has 2 required parameters, x and y, which matches the parameters of the plot() method
+
+#Define the axes limits (minimum, maximum)
+ax.set_xlim(0, 5)
+ax.set_ylim(0, 5)
+
+
 
 
 
