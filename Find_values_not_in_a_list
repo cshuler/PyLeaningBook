@@ -1,0 +1,18 @@
+#with files
+#   'MY_wl.csv'
+#   'ASPA_wl.csv'
+
+
+f =  open('MY_wl.csv', "r")
+data = f.read()
+rows = data.split('\n')
+
+g =  open('ASPA_wl.csv', "r")
+asdata = g.read()
+asrows = asdata.split('\n')
+
+not_in_my_list = [0]
+for i in asrows: 
+    if i not in rows:
+        not_in_my_list = not_in_my_list.append(i)
+print(not_in_my_list)
