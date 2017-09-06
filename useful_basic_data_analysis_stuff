@@ -1,0 +1,6 @@
+#use Series.value_counts() to return the frequency distribution as Series object:
+freq_counts = df['Column_name'].value_counts()
+
+# use Series.sort_index() to sort the frequency distribution in ascending order by the values in the column
+sorted_freq_counts = freq_counts.sort_index()
+
