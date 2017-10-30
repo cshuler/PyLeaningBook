@@ -1,0 +1,14 @@
+Use x? to print metadata of x
+
+X = y[:]  force a copy do not just point to original
+
+
+np.square(x) = x**2
+
+
+#nice way to keep track of status in loops
+if i % 20 == 0:
+      print ("Completed loop ", i, " out of ", nt)
+
+
+in jupyter notebooks close and halt when exiting. 
