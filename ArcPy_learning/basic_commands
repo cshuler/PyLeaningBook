@@ -1,0 +1,14 @@
+# find current path
+print mxd.filePath
+
+# instantate the current map document 
+mxd = arcpy.mapping.MapDocument("CURRENT")
+
+
+# list the layers in the map document 
+arcpy.mapping.ListLayers(mxd)
+
+input = 'Whatever_shapefile_you_want_from_the_list'
+
+# turns the table data into a numpy array of the 
+arcpy.da.TableToNumPyArray(input, ('headder 1', 'neadder 2', etc...))
