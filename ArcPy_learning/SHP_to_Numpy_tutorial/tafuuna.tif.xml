@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20180125</CreaDate><CreaTime>15142600</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.1\ArcToolbox\Toolboxes\Conversion Tools.tbx\PolygonToRaster" Date="20180125" Time="151426">PolygonToRaster Tafuna_Aq Id C:\Users\cshuler\Desktop\PyLeaningBook-master\ArcPy_learning\SHP_to_Numpy_tutorial\tafuuna.tif CELL_CENTER NONE 100</Process></lineage></DataProperties></Esri></metadata>
