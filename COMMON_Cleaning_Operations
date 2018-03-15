@@ -1,0 +1,5 @@
+# make the dates dates
+data['Date'] = pd.to_datetime(data['Date'], errors='coerce')   
+
+# remove any whitespace in the collumn headdings
+data.columns = data.columns.str.strip()                  
