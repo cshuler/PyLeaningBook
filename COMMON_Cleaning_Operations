@@ -3,3 +3,22 @@ data['Date'] = pd.to_datetime(data['Date'], errors='coerce')
 
 # remove any whitespace in the collumn headdings
 data.columns = data.columns.str.strip()                  
+
+# make all #s in the column numeric and any other non numbers are now NAN
+data['Column_name'] = pd.to_numeric(data['Column_name'], errors="coerce")  # any other non numbers are now NAN
+
+
+# resample high resolution data to daily or hourly 
+ASCC_DAYrain_data_tmp  = ASCC_rain_data.set_index('DateandTime').resample('D')['Rain (in) '].sum()     # sum the rainfall by days
+day_rain_frame = pd.DataFrame(ASCC_DAYrain_data_tmp)
+ASCC_DAYrain_data = day_rain_frame.reset_index(drop=False)  
+
+ASCC_HRrain_data_tmp  = ASCC_rain_data.set_index('DateandTime').resample('H')['Rain (in) '].sum()     # sum the rainfall by hours
+hr_rain_frame = pd.DataFrame(ASCC_HRrain_data_tmp)
+ASCC_HRrain_data = hr_rain_frame.reset_index(drop=False)  
+
+
+# iterate over a list 
+for idx, val in enumerate(data_item_list):
+    # idx is the counter starting at 0
+    # val is the item in the data_item_list
