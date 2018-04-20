@@ -6,3 +6,10 @@ for <i> in <object>:
 #performs function on each i, 
 - in a list the i represents each item. 
 - 
+
+
+
+# iterate over a list 
+for idx, val in enumerate(data_item_list):
+    # idx is the counter starting at 0
+    # val is the item in the data_item_list
