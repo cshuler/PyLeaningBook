@@ -1,0 +1,9 @@
+# do something to each row in a pandas dataframe
+output = ( df[column]).apply(lambda x: do_something(x))
+
+
+# perform an operation on a list of numbers 
+ list( map( lambda x : x * x, [list of numbers])))
+ 
+ # list of files in a directory with a certain extension 
+ list((f for f in os.listdir(directory) if f.endswith('.extension')))
