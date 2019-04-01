@@ -12,3 +12,7 @@ input = 'Whatever_shapefile_you_want_from_the_list'
 
 # turns the table data into a numpy array of the 
 arcpy.da.TableToNumPyArray(input, ('headder 1', 'neadder 2', etc...))
+
+
+# list out the fields in the attribute table of a shapefile
+[f.name for f in arcpy.ListFields(PATH TO SHAPEFILE))]
