@@ -1,0 +1,29 @@
+## notes on usng Conda Environments
+
+TO create a new environment on computer use the command in the command prompt, 
+when your cmmnd pompt is in the directory that holds the environment.yml file, 
+for me it is currently C:\Users\cshuler>: 
+
+conda env create -f environment.yml
+
+Here is an examle environment file: 
+
+name: WX_prs
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - numpy
+  - matplotlib
+  - pandas
+  - scipy
+  - notebook 
+  
+  
+  Note that the - notebook package is key to getting the jupyter notebook to run in the correct environment
+  
+  
+  TO use a project in a certain environment open in in the command prompt with the followin commands 
+  
+  > conda activate (whatever the environment name is) 
+  > jupyter notebook
