@@ -1,0 +1,36 @@
+
+# set the paramater to plot
+parameter =  'Total N'                                                                                      # options are 'Total N', 'Total P', 'Phosphate', 'Silicate', 'N+N', 'Ammonia', 'Field Salinity', 'Lab Salinity'
+p_mean = Water_frame[parameter].mean()                                                                      # used for scaling the symbols
+
+kml = simplekml.Kml()
+for index, row in Water_frame.iterrows():                                                                   # iterate over each row
+    pnt = kml.newpoint(name=str(round(row["DIN_umolL"],2)), coords=[( row["Longitude"],row["Latitude"])])   # change name to row["Sample ID"]  to display just sample id names   
+    
+    pnt.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/road_shield3.png'                 # see http://kml4earth.appspot.com/icons.html   for options of symbols
+    
+    pnt.iconstyle.color = '95ff0000'                                                                        # Hex color   note forst two digits are transparency last six are the normal hex color digits, see https://www.colorhexa.com/
+    
+    scaled_value = round((row[parameter]/p_mean),2)                                                         # linearly scale symbol size relative to the mean of all paramater values in the dataset
+    pnt.iconstyle.scale = scaled_value                                                                      # apply scaling 
+
+kml.save(path = os.path.join(result_space, "water_{}.kml".format(parameter)))                               # save the kml
+
+
+Notes
+### Save KML (google earth) files to map out sample sites and values for desired parameter
+This is currently set up to be user modifiable for the following:
+- a) selecting a parameter to plot
+- b) styling the parameter, (shape, color) 
+- c) sizing the parameter by a simple linear relationship, the math on this line can be changed if a different relative sozing algorithm is desired
+
+
+Useful KML websites
+
+https://bitbucket.org/KyleLancaster/simplekml/src/default/README.txt
+    
+https://simplekml.readthedocs.io/en/latest/
+    
+https://ocefpaf.github.io/python4oceanographers/blog/2014/03/10/gearth/
+
+    
