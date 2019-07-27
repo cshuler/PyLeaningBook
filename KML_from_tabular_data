@@ -1,4 +1,4 @@
-### Save KML (google earth) files to map out sample sites and values for desired parameter
+### Save POINT KML (google earth) files to map out sample sites and values for desired parameter
 This is currently set up to be user modifiable for the following:
 - a) selecting a parameter to plot
 - b) styling the parameter, (shape, color) 
@@ -24,6 +24,51 @@ kml.save(path = os.path.join(result_space, "water_{}.kml".format(parameter)))   
 
 
 
+## Save POLYGON kml files
+
+# This is for making KML files from polygon shapefiles, first need to put the input shapefiles into coordinate space (WGS84)
+def proj_to_WGS84(in_shp, out_shp): 
+    tmp = gpd.GeoDataFrame.from_file(in_shp)
+    tmpWGS84 = tmp.to_crs({'proj':'longlat', 'ellps':'WGS84', 'datum':'WGS84'})
+    tmpWGS84.to_file(out_shp)
+    
+# Write a KML file from the projected shapefile 
+def poly_shp_to_kml(IN_SHP, OUT_SHP, colorstring = "50ff0000"):
+    kml = simplekml.Kml(open=1)       # create the kml file
+    pfol = kml.newfolder(name="folder")
+    openShape = ogr.Open(IN_SHP)
+
+    layers = openShape.GetLayerByIndex(0)
+    i = 0
+    for element in layers:
+        geom = loads(element.GetGeometryRef().ExportToWkb())
+        i=i+1
+        arrcoords = geom.to_wkt()
+        pol = pfol.newpolygon() # the part that creates the kml
+        pol.visibility = 50
+        pol.style.polystyle.color = colorstring     # 'hexadecimal color string'
+        pol.altitudemode = 'relativeToGround'
+        pol.extrude = 1
+        coords = arrcoords.replace('POLYGON','').replace('(','').replace(')','')
+        coords = coords.replace('MULTI','')
+        coords = coords.split(',')
+        asize = 1
+        pol.outerboundaryis = ([(float(coords[j].split()[0]),float(coords[j].split()[1]),asize) for j in range(len(coords))])
+
+    kml.save(OUT_SHP)  # save the kml
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Useful KML websites
 
@@ -32,5 +77,9 @@ https://bitbucket.org/KyleLancaster/simplekml/src/default/README.txt
 https://simplekml.readthedocs.io/en/latest/
     
 https://ocefpaf.github.io/python4oceanographers/blog/2014/03/10/gearth/
+
+https://gis.stackexchange.com/questions/224526/convert-shapefile-from-projected-coordinates-using-python/224553
+
+https://publicwiki.deltares.nl/display/OET/From+shape+to+KML
 
     
