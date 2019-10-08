@@ -1,0 +1,11 @@
+import zipfile
+from zipfile import ZipFile
+
+path_Tula_bittchzips = os.path.join("..", "Data", 'junkzips') 
+Path_go = os.path.join("..", "Data", 'unziped_trash') 
+
+# Create a ZipFile Object and load sample.zip in it
+for i in  os.listdir(path_Tula_bittchzips): 
+    with ZipFile(os.path.join(path_Tula_bittchzips, i), 'r') as zipObj:
+       # Extract all the contents of zip file in different directory
+       zipObj.extractall(Path_go)
