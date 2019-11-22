@@ -1,0 +1,26 @@
+parameter =  'ave_d15N'                                                                                      # options are 'Total N', 'Total P', 'Phosphate', 'Silicate', 'N+N', 'Ammonia', 'Field Salinity', 'Lab Salinity'
+p_max = Master_algae_data[parameter].max()                                                                        # used for scaling the symbols
+p_min = Master_algae_data[parameter].min()
+
+# generate color list
+green = Color("green")
+colors = list(green.range_to(Color("red"),102))
+
+# make the kmL
+kml = simplekml.Kml()
+for index, row in Master_algae_data.iterrows():                                                                   # iterate over each row
+    pnt = kml.newpoint(name=str(round(row[parameter],2)), coords=[( row["Longitude"],row["Latitude"])])   # change name to row["Sample ID"]  to display just sample id names   
+    
+    pnt.iconstyle.icon.href = 'http://maps.google.com/mapfiles/kml/shapes/road_shield3.png'                 # see http://kml4earth.appspot.com/icons.html   for options of symbols
+    
+    scaled_value = int(round(((row[parameter]-p_min)/(p_max-p_min)),2)*100)   # scale the value of the paramater for display
+    color_RGB = colors[scaled_value].get_hex()
+    color_BGA = "90"+color_RGB[5:7]+color_RGB[3:5]+color_RGB[1:3]
+
+    pnt.iconstyle.color =    color_BGA                                                                 # Hex color   note forst two digits are transparency last six are the normal hex color digits, see https://www.colorhexa.com/
+    
+    #scaled_value = round((row[parameter]/p_mean),2)                                                         # linearly scale symbol size relative to the mean of all paramater values in the dataset
+    #pnt.iconstyle.scale = scaled_value          
+    pnt.iconstyle.scale = .8
+
+kml.save(path = os.path.join('..', 'Results', "Oahu_Algae_dots_map_{}.kml".format(parameter)))   
