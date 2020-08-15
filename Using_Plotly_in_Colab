@@ -1,0 +1,44 @@
+# Using plotly + cufflinks in offline mode
+import plotly as py
+import cufflinks
+from plotly import __version__
+%matplotlib inline
+import plotly.offline as pyo
+import plotly.graph_objs as go
+from plotly.offline import iplot
+import cufflinks as cf
+from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot 
+cf.go_offline()
+cufflinks.go_offline(connected=True)
+#init_notebook_mode(connected=True)
+init_notebook_mode(connected=False)
+def configure_plotly_browser_state():
+  import IPython
+  display(IPython.core.display.HTML('''
+        <script src="/static/components/requirejs/require.js"></script>
+        <script>
+          requirejs.config({
+            paths: {
+              base: '/static/base',
+              plotly: 'https://cdn.plot.ly/plotly-latest.min.js?noext',
+            },
+          });
+        </script>
+        '''))
+# Refs 
+# https://towardsdatascience.com/the-next-level-of-data-visualization-in-python-dd6e99039d5e
+# https://stackoverflow.com/questions/52859983/interactive-matplotlib-figures-in-google-colab
+
+
+
+# THEN to plot you NEED the configure_plotly_browser_state()
+
+Plot_parameter = 'ave_d15N'           # Can use [ave_d15N', 'ave_d13C', 'ave_pctn', 'ave_pctc', 'Site', 'D15Nx%N', 'D15Nx%N^2', 'D15N^2x%N'] 
+
+configure_plotly_browser_state()
+Master_algae_data.pivot(columns='Site', values=Plot_parameter).iplot(
+        kind='box',
+        yTitle='fans',
+        title='Fans Distribution by Publication')
+
+plt.show()
