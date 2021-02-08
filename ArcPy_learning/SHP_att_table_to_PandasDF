@@ -1,0 +1,7 @@
+# read on OSDS data from shapefile and make reasonable pandas dataframe 
+
+osds_path = os.path.join(workspace, 'OSDS_wGridCells.shp')
+columns_nams = [field.name for field in arcpy.ListFields(osds_path)]     # List of all col names
+columns_nams.pop(1)  # remove stupid shape col                           # THe "Shape" col will make numpy array to pandas puke
+temparr = arcpy.da.FeatureClassToNumPyArray(osds_path, columns_nams)     # convert to numpy recarray
+OSDS_wGrid = pd.DataFrame(temparr)                                       # Convert to pandas bliss
