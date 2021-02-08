@@ -1,0 +1,4 @@
+flikcells_shp = os.path.join("..", "Workspace_shp/Ver3", "Flikr_oahu_250_cells.shp")    # path to a shapefile on disc
+[field.name for field in arcpy.ListFields(flikcells_shp)]   # Create a list of all its fields
+
+
