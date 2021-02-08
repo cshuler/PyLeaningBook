@@ -1,0 +1,10 @@
+# Convert CSV to a POINTS shapefile of the OSDS points with the Flikr 
+
+XFieldName = 'X'                                 # THe x field longitude 
+YFieldName = 'Y'                                 # THe y field latitude 
+spatialRef = arcpy.SpatialReference(4326)        # THis is wgs84
+csvFilePath = os.path.join(tempspace, 'OSDS_Count_fliker_cells.csv')    # Path to input csv with lat and lon as columns X and Y
+shpFilePath = os.path.join(workspace)
+
+arcpy.MakeXYEventLayer_management(csvFilePath, XFieldName, YFieldName, 'OSDS_Count_fliker_cells', spatial_reference=spatialRef)
+arcpy.FeatureClassToShapefile_conversion('OSDS_Count_fliker_cells', shpFilePath)    # Shapefile name will be "OSDS_Count_fliker_cells.shp"
