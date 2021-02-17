@@ -1,0 +1,11 @@
+# From https://stackoverflow.com/questions/44318844/pandas-dataframe-index-match
+
+# First convert the match keys and the value column to a dictionary 
+
+# the new dic                   # The key that exists in both dfs      # The value that you want mapped in to the new df
+lat_dic = dict(sitedata.set_index('MonitoringLocationIdentifier').LatitudeMeasure)
+lon_dic = dict(sitedata.set_index('MonitoringLocationIdentifier').LongitudeMeasure)
+
+# then map the values (lat) onto the rows by the key column
+data['Lat'] = data.MonitoringLocationIdentifier.map(lat_dic)
+data['Long'] = data.MonitoringLocationIdentifier.map(lon_dic)
