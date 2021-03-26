@@ -1,0 +1,13 @@
+
+# copy pristine dataset to something that can be joined on
+in_polygon_blocktrack = os.path.join("..", "Projected_data/Census", '2010_census_tracts_Clean.shp')
+arcpy.CopyFeatures_management(in_polygon_blocktrack, os.path.join(".", "tempspace", 'temp_track_check.shp'))
+
+# Convert a pandas dataframe to an idiotic arc table view format (lame!)
+testtracks.to_csv(os.path.join(".", "tempspace", 'temp.csv'))
+arcpy.TableToTable_conversion(os.path.join(".", "tempspace", 'temp.csv'), os.path.join(".", "tempspace"), "esrisucks")
+arcpy.management.MakeTableView(os.path.join(".", "tempspace", "esrisucks.dbf"), "esriislame")
+# Do the table joining
+in_polygons = os.path.join(".", "tempspace", 'temp_track_check.shp')
+joinfield = "Track_ID"
+arcpy.JoinField_management(in_polygons, joinfield, "esriislame", joinfield) 
