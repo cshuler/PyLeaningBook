@@ -1,0 +1,9 @@
+# read in a dataframe (algae water whatever) with a lat lon col (Ideally in WGS 84) to a geodataframe then print to a shapefile
+def DF_to_SHP(df, LonCol, LatCol, Output_location):
+    GeoDF = geopandas.GeoDataFrame(df, geometry=geopandas.points_from_xy(df[LonCol], df[LatCol]))
+    GeoDF.to_file(Output_location, driver='ESRI Shapefile')
+    
+    
+    
+# read in a shapefile 
+gpd.read_file(os.path.join("..", "Data", "Hla_dots_w_Ryan_station_info.shp"))
