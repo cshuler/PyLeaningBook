@@ -1,0 +1,6 @@
+# remove extranious fields
+fcList = [field.name for field in arcpy.ListFields(toshp)]   # list fields
+# This is the list of fields you want to retain
+fcList.remove('Grid_ID'); fcList.remove('FID'); fcList.remove('Shape') #pop off keepers
+for field in fcList:
+        arcpy.DeleteField_management(toshp, fcList)  # delete extranious fields
