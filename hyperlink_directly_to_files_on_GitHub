@@ -1,0 +1,9 @@
+How to hyperlink_directly_to_files_on_GitHub
+
+For example if you want to link directly to the file at: 
+https://github.com/cshuler/Kumu_Data/blob/main/Kumu_map_lab1/QRCode.PNG
+
+you would reformat the address as: 
+
+https://raw.githubusercontent.com/cshuler/Kumu_Data/main/Kumu_map_lab1/QRCode.PNG
+
