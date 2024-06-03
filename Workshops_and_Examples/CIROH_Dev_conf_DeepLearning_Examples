@@ -1,0 +1,24 @@
+1) Neural Hydrology modules for LSTM hydrological prediction.  Probably the best DL module for prediction Ive ever seen 
+
+https://neuralhydrology.readthedocs.io/en/latest/
+
+
+2) OPG-CNN-Northern-Utah-CIROH-Workshop. 
+
+A nice vanilla example and codebase for implementing a CNN to address a geospatial precip prediciton problem. 
+
+https://github.com/CIROH-UA/OPG-CNN-Northern-Utah-CIROH-Workshop
+
+3) DEVCON_SNOW_ML - prediction of snow depth using an ANN type ML model 
+
+https://github.com/CIROH-UA/DEVCON_SNOW_ML/tree/main
+
+4) physically informed nural networks codebase. 
+I didnt attend this one...
+
+https://github.com/AMBehroozi/PINN_workshop_ciroh/tree/main
+
+5 Hydrofabric stuff
+https://github.com/NOAA-OWP/hydrofabric/
+
+https://www.lynker-spatial.com/data?path=hydrofabric%2Fv2.2%2Freference%2F
